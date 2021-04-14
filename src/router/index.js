@@ -7,6 +7,11 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path:"/car",
+    name:"Car",
+    component:()=>import ("@/views/Car")
+  }
 ]
 
 const router = createRouter({
