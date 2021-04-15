@@ -1,23 +1,19 @@
 <template>
-  <div class="w-full user-list">
+  <div class="user">
     <Search
       :func="createPromise"
       :reloadFunc="cleanPromise"
       :loading="loading"
       :placeHolder="'Search By Name'"
     />
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-4" v-if="allUser">
-      <li
-        v-for="user in allUser"
-        :key="user.email"
-        class="bg-gray-200 rounded-md p-4 grid place-items-center"
-      >
-        <img :src="user.picture.large" class="rounded-full w-32" />
-        <h2 class="p-2 bg-gray-100 rounded-lg my-2 text-lg">
+    <ul class="user-grid-container" v-if="allUser">
+      <li v-for="user in allUser" :key="user.email" class="user-grid-item">
+        <img :src="user.picture.large" class="user-image" />
+        <h2 class="user-info">
           {{ user.name.first }}
         </h2>
         <slot name="secondRow" :user="user"></slot>
-        <AppButton @click="removeUser(user)" class="bg-red-300"
+        <AppButton @click="removeUser(user)" class="btn btn-app"
           >Remove</AppButton
         >
       </li>
@@ -49,5 +45,46 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/style/_colors";
+@import "@/assets/style/_mixins";
+@import "@/assets/style/_methods";
+.user {
+  @extend %align-center;
+  justify-content: center;
+  flex-direction: column;
+
+  &-grid-container {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .user-grid-item {
+      padding: 12px 12px;
+      border-radius: 12px;
+      @extend %align-center;
+      flex-direction: column;
+      background: $card-bg;
+      width: 100%;
+      transition: all 0.4s ease;
+      &:hover {
+        transform: scaleX(1.03);
+      }
+
+      .user-image {
+        width: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+  }
+}
 </style>

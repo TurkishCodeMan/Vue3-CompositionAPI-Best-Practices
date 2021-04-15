@@ -6,17 +6,17 @@
       :loading="loading"
       :placeHolder="'Search Make Name'"
     />
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-4" v-if="allCar">
+    <ul class="car-grid-container" v-if="allCar">
       <li
         v-for="car in allCar"
         :key="car.Make_ID"
-        class="bg-gray-200 rounded-md p-4 grid place-items-center"
+        class="car-grid-item"
       >
-        <h2 class="p-2 bg-gray-100 rounded-lg my-2 text-lg">
+        <h2 class="car-info">
           {{ car.Make_Name }}
         </h2>
         <slot name="secondRow" :car="car"></slot>
-        <AppButton @click="removeCar(car)" class="bg-red-300">Remove</AppButton>
+        <AppButton @click="removeCar(car)" class="btn btn-remove">Remove</AppButton>
       </li>
     </ul>
   </div>
@@ -46,5 +46,44 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/style/_colors";
+@import "@/assets/style/_mixins";
+@import "@/assets/style/_methods";
+  .car{
+    display: flex;
+    width: 100%;
+
+    &-grid-container{
+      display: grid;
+      place-items: center;
+      grid-template-columns: repeat(1,1fr);
+      gap: 20px;
+
+      @include mobile{
+          grid-template-columns: repeat(2,1fr);
+      }
+      @include tablet{
+          grid-template-columns: repeat(4,1fr);
+      }
+      
+      .car-grid-item{
+        padding: 45px;
+        width: 100%;
+        background: $card-bg;
+        list-style-type: none;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+
+        .car-info{
+          font-size: 18px;
+          max-height: 30px;
+        }
+      }
+    }
+    
+
+
+  }
 </style>

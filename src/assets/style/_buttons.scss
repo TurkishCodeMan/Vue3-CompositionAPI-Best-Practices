@@ -1,0 +1,17 @@
+.btn {
+  padding: 12px 18px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 8px;
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-remove {
+  background: rgba(255, 0, 80, 0.9);
+}

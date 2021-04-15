@@ -1,12 +1,14 @@
 <template>
-  <div class="search absolute right-2 top-8">
-    <label for="searchText" v-if="loading" class="text-gray-50 ">Loading...</label>
+  <div class="search">
+    <label for="searchText" v-if="loading" class="search-loading"
+      >Loading...</label
+    >
     <input
       id="searchText"
       v-model="searchInput"
       type="text"
       :placeholder="placeHolder"
-      class="py-2 px-3 bg-gray-200 rounded-lg w-10/12"
+      class="search-input"
     />
   </div>
 </template>
@@ -22,7 +24,7 @@ export default {
   },
   setup(props) {
     const searchInput = ref("");
-    
+
     watch(searchInput, () => {
       if (searchInput.value != "") {
         props.func(searchInput.value);
@@ -36,5 +38,28 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "@/assets/style/_mixins";
+.search {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 20%;
+  top: 16px;
+  width: 340px;
+  &-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  @include tablet {
+    right: 12px;
+    top: 16px;
+    width: 320px;
+  }
+}
 </style>

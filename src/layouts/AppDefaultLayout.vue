@@ -1,5 +1,5 @@
 <template>
-  <div class="app-default min-h-screen bg-gray-100">
+  <div class="app-default">
     <Navbar/>
     <router-view v-slot="{ Component }">
       <keep-alive>
@@ -16,5 +16,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+.app-default{
+  min-height: 100vh;
+
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.6),
+    rgba(0, 255, 255, 0.2)
+  );
+}
 </style>

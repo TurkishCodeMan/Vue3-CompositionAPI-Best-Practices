@@ -1,6 +1,6 @@
 <template>
-  <div class="appLayout w-full h-full">
-    <div class="bg-red-300 p-4" v-if="error">Uh Oh ...{{ error }}</div>
+  <div class="appLayout">
+    <div class="" v-if="error">Uh Oh ...{{ error }}</div>
     <Suspense v-else>
       <template #default>
         <component :is="layout" />
@@ -31,5 +31,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.appLayout{
+  width: 100%;
+}
 </style>
