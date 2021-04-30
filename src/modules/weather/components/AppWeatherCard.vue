@@ -21,7 +21,6 @@ import { useStore } from "vuex";
 import useSearch from "@/use/other/useSearch";
 import Search from "@/components/Search";
 import useWeather from "@/modules/weather/use/useWeather";
-import { computed } from "vue";
 export default {
   components: { Search },
   setup() {
@@ -31,11 +30,8 @@ export default {
       () => store.commit("Weather/SET_CITY", undefined)
     );
 
-    const { city } = useWeather();
+    const { city,calcCelcius } = useWeather();
 
-    const calcCelcius = computed(() => {
-      return Math.floor(city.value.main.temp - 273.15);
-    });
 
     return { city, calcCelcius, createPromise, cleanPromise, loading };
   },
