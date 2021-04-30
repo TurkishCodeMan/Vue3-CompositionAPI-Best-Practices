@@ -13,6 +13,7 @@ export default {
 .container {
   margin: 0 auto;
   width: 100%;
+  padding: 10px;
   @include mobile {
     max-width: 100%;
   }

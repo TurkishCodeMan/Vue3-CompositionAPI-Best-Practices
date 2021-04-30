@@ -9,6 +9,9 @@
       <router-link class="nav-link" tag="a" :to="{ name: 'Car' }"
         >Car</router-link
       >
+        <router-link class="nav-link" tag="a" :to="{ name: 'Weather' }"
+        >Weather</router-link
+      >
     </div>
 
     <a class="nav-toggle-bar">

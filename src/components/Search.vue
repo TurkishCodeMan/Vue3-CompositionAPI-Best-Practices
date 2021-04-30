@@ -44,9 +44,9 @@ export default {
   display: flex;
   align-items: center;
   position: absolute;
-  right: 20%;
+  right: 28%;
   top: 16px;
-  width: 340px;
+  width: 220px;
   &-input {
     width: 100%;
     padding: 12px;

@@ -26,14 +26,16 @@ import useUser from "@/use/home/useUser";
 import useSearch from "@/use/other/useSearch";
 import AppButton from "@/components/AppButton";
 import Search from "@/components/Search";
-import { useStore } from "vuex";
+import { useStore} from "vuex";
 import { onMounted } from "vue";
 export default {
   components: { AppButton, Search },
   async setup() {
     const { allUser, loadUser, removeUser } = useUser();
     const store = useStore();
+
     onMounted(async () => {
+      console.log("Loadf User")
       await loadUser();
     });
     const { createPromise, cleanPromise, loading } = useSearch(
